@@ -1,12 +1,15 @@
-import { gql } from 'apollo-server';
+import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
   type User {
     id: ID!
-    name: String!
+    firstName: String!
+    lastName: String!
+    password: String!
+    username: String!
   }
 
   extend type Query {
-    getUser: User
+    user: User
   }
 `;

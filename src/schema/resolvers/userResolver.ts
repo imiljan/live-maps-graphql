@@ -3,7 +3,7 @@ import { IResolver } from '../../types/IResolverType';
 
 export const resolvers: IResolver = {
   Query: {
-    getUser: () => {
+    user: () => {
       return User.findOne();
     },
   },
