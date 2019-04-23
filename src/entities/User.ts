@@ -14,10 +14,25 @@ export class User extends BaseEntity {
 
   @Column('varchar', {
     nullable: false,
+    unique: true,
+    length: 150,
+    name: 'username',
+  })
+  username: string;
+
+  @Column('varchar', {
+    nullable: false,
     length: 128,
     name: 'password',
   })
   password: string;
+
+  @Column('varchar', {
+    nullable: false,
+    length: 254,
+    name: 'email',
+  })
+  email: string;
 
   @Column('varchar', {
     nullable: false,
@@ -32,21 +47,6 @@ export class User extends BaseEntity {
     name: 'last_name',
   })
   lastName: string;
-
-  @Column('varchar', {
-    nullable: false,
-    length: 254,
-    name: 'email',
-  })
-  email: string;
-
-  @Column('varchar', {
-    nullable: false,
-    unique: true,
-    length: 150,
-    name: 'username',
-  })
-  username: string;
 
   @OneToMany((type) => UserInterest, (userInterests) => userInterests.user)
   userInterests: UserInterest[];
