@@ -8,6 +8,6 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    userInterest: UserInterest
+    userInterest(id: ID!): UserInterest
   }
 `;

@@ -11,6 +11,7 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    interest: Interest
+    interest(id: ID!): Interest
+    interests: [Interest]!
   }
 `;

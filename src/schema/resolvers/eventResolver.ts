@@ -4,7 +4,7 @@ import { Event } from '../../entities/Event';
 
 export const resolvers: IResolvers = {
   Query: {
-    event: (_, __, ___, info) => {
+    event: (_, { id }, ___, info) => {
       let relations: string[] = [];
       if (info.fieldNodes[0].selectionSet !== undefined) {
         info.fieldNodes[0].selectionSet.selections
@@ -15,7 +15,7 @@ export const resolvers: IResolvers = {
             }
           });
       }
-      return Event.findOne({ relations });
+      return Event.findOne(id, { relations });
     },
   },
 };

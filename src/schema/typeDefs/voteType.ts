@@ -10,6 +10,6 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    vote: Vote
+    vote(id: ID!): Vote
   }
 `;

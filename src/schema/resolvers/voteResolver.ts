@@ -4,8 +4,8 @@ import { Vote } from '../../entities/Vote';
 
 export const resolvers: IResolvers = {
   Query: {
-    vote: () => {
-      return Vote.findOne();
+    vote: (_, { id }) => {
+      return Vote.findOne(id);
     },
   },
 };

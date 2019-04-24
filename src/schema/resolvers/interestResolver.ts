@@ -4,8 +4,11 @@ import { Interest } from '../../entities/Interest';
 
 export const resolvers: IResolvers = {
   Query: {
-    interest: () => {
-      return Interest.findOne();
+    interest: (_, { id }) => {
+      return Interest.findOne(id);
+    },
+    interests: () => {
+      return Interest.find();
     },
   },
 };

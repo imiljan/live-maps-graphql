@@ -14,6 +14,6 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    user: User
+    user(id: ID!): User
   }
 `;

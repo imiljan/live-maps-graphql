@@ -21,6 +21,6 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    event: Event
+    event(id: ID!): Event
   }
 `;

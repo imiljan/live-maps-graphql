@@ -4,8 +4,8 @@ import { UserInterest } from '../../entities/UserInterest';
 
 export const resolvers: IResolvers = {
   Query: {
-    userInterest: () => {
-      return UserInterest.findOne();
+    userInterest: (_, { id }) => {
+      return UserInterest.findOne(id);
     },
   },
 };
