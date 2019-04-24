@@ -5,6 +5,8 @@ export const typeDefs = gql`
     id: ID!
     sign: Int!
     createdAt: Date!
+    event: Event
+    user: User
   }
 
   extend type Query {

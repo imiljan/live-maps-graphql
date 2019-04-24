@@ -21,7 +21,7 @@ export class UserCheckin extends BaseEntity {
   @JoinColumn({ name: 'event_id' })
   event: Event | null;
 
-  @ManyToOne((type) => User, (user) => user.userCheckin, { nullable: false })
+  @ManyToOne((type) => User, (user) => user.userCheckins, { nullable: false })
   @JoinColumn({ name: 'user_id' })
   user: User | null;
 }

@@ -15,6 +15,9 @@ export const typeDefs = gql`
     lat: Float!
     long: Float!
     permanent: Boolean!
+    interest: Interest
+    votes: [Vote]!
+    userCheckins: [UserCheckin]!
   }
 
   extend type Query {

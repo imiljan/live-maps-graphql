@@ -6,6 +6,8 @@ export const typeDefs = gql`
     name: String!
     description: String!
     color: String!
+    userInterests: [UserInterest]!
+    events: [Event]!
   }
 
   extend type Query {

@@ -55,5 +55,5 @@ export class User extends BaseEntity {
   votes: Vote[];
 
   @OneToMany((type) => UserCheckin, (userCheckin) => userCheckin.user)
-  userCheckin: UserCheckin[];
+  userCheckins: UserCheckin[];
 }

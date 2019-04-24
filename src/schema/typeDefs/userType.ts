@@ -8,6 +8,9 @@ export const typeDefs = gql`
     email: String!
     firstName: String!
     lastName: String!
+    userInterests: [UserInterest]!
+    votes: [Vote]!
+    userCheckins: [UserCheckin]!
   }
 
   extend type Query {

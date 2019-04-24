@@ -1,7 +1,8 @@
-import { Interest } from '../../entities/Interest';
-import { IResolver } from '../../types/IResolverType';
+import { IResolvers } from 'graphql-tools';
 
-export const resolvers: IResolver = {
+import { Interest } from '../../entities/Interest';
+
+export const resolvers: IResolvers = {
   Query: {
     interest: () => {
       return Interest.findOne();

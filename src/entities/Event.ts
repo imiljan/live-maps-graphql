@@ -29,7 +29,7 @@ export class Event extends BaseEntity {
 
   @Column('text', {
     nullable: false,
-    name: 'body',
+    name: 'description',
   })
   body: string;
 
@@ -86,7 +86,7 @@ export class Event extends BaseEntity {
 
   @Column('real', {
     nullable: false,
-    name: 'long',
+    name: 'lng',
   })
   long: number;
 

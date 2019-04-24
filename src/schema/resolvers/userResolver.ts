@@ -1,7 +1,8 @@
-import { User } from '../../entities/User';
-import { IResolver } from '../../types/IResolverType';
+import { IResolvers } from 'graphql-tools';
 
-export const resolvers: IResolver = {
+import { User } from '../../entities/User';
+
+export const resolvers: IResolvers = {
   Query: {
     user: () => {
       return User.findOne();

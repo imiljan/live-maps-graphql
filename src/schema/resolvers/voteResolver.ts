@@ -1,7 +1,8 @@
-import { Vote } from '../../entities/Vote';
-import { IResolver } from '../../types/IResolverType';
+import { IResolvers } from 'graphql-tools';
 
-export const resolvers: IResolver = {
+import { Vote } from '../../entities/Vote';
+
+export const resolvers: IResolvers = {
   Query: {
     vote: () => {
       return Vote.findOne();
