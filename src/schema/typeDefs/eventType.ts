@@ -22,5 +22,6 @@ export const typeDefs = gql`
 
   extend type Query {
     event(id: ID!): Event
+    events(interestId: ID!): [Event]!
   }
 `;

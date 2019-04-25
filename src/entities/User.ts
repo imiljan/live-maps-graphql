@@ -48,12 +48,12 @@ export class User extends BaseEntity {
   })
   lastName: string;
 
-  @OneToMany((type) => UserInterest, (userInterests) => userInterests.user)
+  @OneToMany(() => UserInterest, (userInterests) => userInterests.user)
   userInterests: UserInterest[];
 
-  @OneToMany((type) => Vote, (vote) => vote.user)
+  @OneToMany(() => Vote, (vote) => vote.user)
   votes: Vote[];
 
-  @OneToMany((type) => UserCheckin, (userCheckin) => userCheckin.user)
+  @OneToMany(() => UserCheckin, (userCheckin) => userCheckin.user)
   userCheckins: UserCheckin[];
 }

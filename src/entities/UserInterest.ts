@@ -11,13 +11,13 @@ export class UserInterest extends BaseEntity {
   })
   id: number;
 
-  @ManyToOne((type) => Interest, (interest) => interest.userInterests, {
+  @ManyToOne(() => Interest, (interest) => interest.userInterests, {
     nullable: false,
   })
   @JoinColumn({ name: 'interest_id' })
   interest: Interest | null;
 
-  @ManyToOne((type) => User, (user) => user.userInterests, { nullable: false })
+  @ManyToOne(() => User, (user) => user.userInterests, { nullable: false })
   @JoinColumn({ name: 'user_id' })
   user: User | null;
 }

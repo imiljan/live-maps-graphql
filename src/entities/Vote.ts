@@ -23,11 +23,11 @@ export class Vote extends BaseEntity {
   })
   createdAt: Date;
 
-  @ManyToOne((type) => Event, (event) => event.votes, { nullable: false })
+  @ManyToOne(() => Event, (event) => event.votes, { nullable: false })
   @JoinColumn({ name: 'event_id' })
   event: Event | null;
 
-  @ManyToOne((type) => User, (user) => user.votes, { nullable: false })
+  @ManyToOne(() => User, (user) => user.votes, { nullable: false })
   @JoinColumn({ name: 'user_id' })
   user: User | null;
 }

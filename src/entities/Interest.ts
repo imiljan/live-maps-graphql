@@ -31,9 +31,9 @@ export class Interest extends BaseEntity {
   })
   color: string;
 
-  @OneToMany((type) => UserInterest, (userInterest) => userInterest.interest)
+  @OneToMany(() => UserInterest, (userInterest) => userInterest.interest)
   userInterests: UserInterest[];
 
-  @OneToMany((type) => Event, (event) => event.interest)
+  @OneToMany(() => Event, (event) => event.interest)
   events: Event[];
 }

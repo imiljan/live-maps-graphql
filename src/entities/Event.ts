@@ -64,7 +64,7 @@ export class Event extends BaseEntity {
     nullable: false,
     name: 'deleted',
   })
-  deleted: Boolean;
+  deleted: boolean;
 
   @Column('datetime', {
     nullable: false,
@@ -94,15 +94,15 @@ export class Event extends BaseEntity {
     nullable: false,
     name: 'permanent',
   })
-  permanent: Boolean;
+  permanent: boolean;
 
-  @ManyToOne((type) => Interest, (interest) => interest.events, { nullable: false })
+  @ManyToOne(() => Interest, (interest) => interest.events, { nullable: false })
   @JoinColumn({ name: 'interest_id' })
   interest: Interest | null;
 
-  @OneToMany((type) => Vote, (vote) => vote.event)
+  @OneToMany(() => Vote, (vote) => vote.event)
   votes: Vote[];
 
-  @OneToMany((type) => UserCheckin, (userCheckin) => userCheckin.event)
+  @OneToMany(() => UserCheckin, (userCheckin) => userCheckin.event)
   userCheckins: UserCheckin[];
 }

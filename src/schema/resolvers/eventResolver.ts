@@ -4,8 +4,8 @@ import { Event } from '../../entities/Event';
 
 export const resolvers: IResolvers = {
   Query: {
-    event: (_, { id }, ___, info) => {
-      let relations: string[] = [];
+    event: (_, { id }, __, info) => {
+      const relations: string[] = [];
       if (info.fieldNodes[0].selectionSet !== undefined) {
         info.fieldNodes[0].selectionSet.selections
           .map((e: any) => e.name)
@@ -17,5 +17,7 @@ export const resolvers: IResolvers = {
       }
       return Event.findOne(id, { relations });
     },
+    events: (_, { interestId }) =>
+      Event.find({ relations: ['interest'], where: { interest: { id: interestId } } }),
   },
 };
