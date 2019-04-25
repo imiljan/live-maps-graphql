@@ -1,4 +1,5 @@
 import { IResolvers } from 'graphql-tools';
+import { In } from 'typeorm';
 
 import { Event } from '../../entities/Event';
 
@@ -17,7 +18,12 @@ export const resolvers: IResolvers = {
       }
       return Event.findOne(id, { relations });
     },
-    events: (_, { interestId }) =>
-      Event.find({ relations: ['interest'], where: { interest: { id: interestId } } }),
+    events: (_, { interestIds }) => {
+      if (interestIds.length !== 0) {
+        return Event.find({ relations: ['interest'], where: { interest: In(interestIds) } });
+      } else {
+        return Event.find({ relations: ['interest'] });
+      }
+    },
   },
 };
