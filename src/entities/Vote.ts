@@ -20,6 +20,7 @@ export class Vote extends BaseEntity {
   @Column('datetime', {
     nullable: false,
     name: 'created_at',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 

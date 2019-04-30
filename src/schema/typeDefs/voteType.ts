@@ -12,4 +12,8 @@ export const typeDefs = gql`
   extend type Query {
     vote(id: ID!): Vote
   }
+
+  extend type Mutation {
+    vote(eventId: ID!, sign: Int!): Boolean!
+  }
 `;

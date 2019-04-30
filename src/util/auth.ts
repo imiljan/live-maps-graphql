@@ -15,9 +15,8 @@ export function createToken(user: User) {
   return jwt.sign(dataStoredInToken, secret, { expiresIn });
 }
 
-export async function getUser(token: string) {
+export function getUser(token: string) {
   const secret = process.env.JWT_SECRET || 'secret';
   const decoded: any = jwt.verify(token, secret);
-  const user = await User.findOne(decoded.id);
-  return user;
+  return User.findOne(decoded.id);
 }

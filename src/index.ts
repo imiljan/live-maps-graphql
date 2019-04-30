@@ -8,12 +8,15 @@ import { getUser } from './util/auth';
 
 const server = new ApolloServer({
   schema,
-  context: ({ req }) => {
+  context: async ({ req }) => {
     // get the user token from the headers
     // authorization: Bearer <token>
     const token = req.headers.authorization || '';
+    if (token === '') {
+      return { user: null };
+    }
     // try to retrieve a user with the token
-    const user = getUser(token.split(' ')[1]);
+    const user = await getUser(token.split(' ')[1]);
     // add the user to the context
     return { user };
   },
