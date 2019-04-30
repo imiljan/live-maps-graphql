@@ -4,8 +4,20 @@ import { ApolloServer } from 'apollo-server';
 import { createConnection } from 'typeorm';
 
 import schema from './schema';
+import { getUser } from './util/auth';
 
-const server = new ApolloServer({ schema });
+const server = new ApolloServer({
+  schema,
+  context: ({ req }) => {
+    // get the user token from the headers
+    // authorization: Bearer <token>
+    const token = req.headers.authorization || '';
+    // try to retrieve a user with the token
+    const user = getUser(token.split(' ')[1]);
+    // add the user to the context
+    return { user };
+  },
+});
 
 createConnection()
   .then(() => {
