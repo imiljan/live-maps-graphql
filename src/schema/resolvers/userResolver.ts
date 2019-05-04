@@ -12,6 +12,9 @@ export const resolvers: IResolvers = {
     user: (_, { id }) => {
       return User.findOne(id);
     },
+    me: (_, __, { user }) => {
+      return user;
+    },
   },
   Mutation: {
     register: async (_, args) => {
