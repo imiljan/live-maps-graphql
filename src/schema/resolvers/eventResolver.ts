@@ -1,6 +1,5 @@
 import { IResolvers } from 'graphql-tools';
-import { In } from 'typeorm';
-
+import { getRepository, In } from 'typeorm';
 import { Event } from '../../entities/Event';
 
 export const resolvers: IResolvers = {
@@ -19,11 +18,16 @@ export const resolvers: IResolvers = {
       return Event.findOne(id, { relations });
     },
     events: (_, { interestIds }) => {
+      // this could be optimized
+      let builder = getRepository(Event)
+        .createQueryBuilder('event')
+        .leftJoinAndSelect('event.interest', 'interest')
+        .leftJoinAndSelect('event.votes', 'votes')
+        .leftJoinAndSelect('votes.user', 'user');
       if (interestIds.length !== 0) {
-        return Event.find({ relations: ['interest'], where: { interest: In(interestIds) } });
-      } else {
-        return Event.find({ relations: ['interest'] });
+        builder = builder.where({ interest: In(interestIds) });
       }
+      return builder.getMany();
     },
   },
 };
