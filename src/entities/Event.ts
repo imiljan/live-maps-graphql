@@ -57,18 +57,21 @@ export class Event extends BaseEntity {
   @Column('datetime', {
     nullable: false,
     name: 'created_at',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 
   @Column('bool', {
     nullable: false,
     name: 'deleted',
+    default: false,
   })
   deleted: boolean;
 
   @Column('datetime', {
     nullable: false,
     name: 'start_at',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   startAt: Date;
 

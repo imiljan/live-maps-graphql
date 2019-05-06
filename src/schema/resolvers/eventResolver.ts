@@ -1,6 +1,7 @@
 import { IResolvers } from 'graphql-tools';
 import { getRepository, In } from 'typeorm';
 import { Event } from '../../entities/Event';
+import { Interest } from '../../entities/Interest';
 
 export const resolvers: IResolvers = {
   Query: {
@@ -28,6 +29,19 @@ export const resolvers: IResolvers = {
         builder = builder.where({ interest: In(interestIds) });
       }
       return builder.getMany();
+    },
+  },
+  Mutation: {
+    event: async (_, args) => {
+      // check if signed in
+      let newEvent = Event.create(args);
+      // TODO: initialize all fields
+      const interest = await Interest.findOne(args.interestId);
+      if (interest) {
+        newEvent.interest = interest;
+      }
+      newEvent = await newEvent.save();
+      return newEvent;
     },
   },
 };

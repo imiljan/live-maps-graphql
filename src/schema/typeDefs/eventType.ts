@@ -24,4 +24,20 @@ export const typeDefs = gql`
     event(id: ID!): Event
     events(interestIds: [ID]!): [Event]!
   }
+
+  extend type Mutation {
+    event(
+      title: String!
+      body: String!
+      img: String
+      address: String
+      hashtag: String
+      startAt: Date
+      endAt: Date
+      lat: Float!
+      long: Float!
+      permanent: Boolean
+      interestId: Int!
+    ): Event!
+  }
 `;
