@@ -31,9 +31,8 @@ export const resolvers: IResolvers = {
       const events = await builder.getMany();
       if (user) {
         for (let i = 0; i < events.length; i++) {
-          events[i].voted = events[i].votes.some(
-            (el) => el.user !== null && el.user.id === user.id
-          );
+          const vote = events[i].votes.find((el) => el.user !== null && el.user.id === user.id);
+          events[i].voted = vote ? vote.sign : 0;
         }
       }
       return events;

@@ -20,7 +20,7 @@ export class Event extends BaseEntity {
   })
   id: number;
 
-  voted: boolean;
+  voted: number;
 
   @Column('varchar', {
     nullable: false,
