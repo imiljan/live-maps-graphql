@@ -18,7 +18,7 @@ export const resolvers: IResolvers = {
       }
       return Event.findOne(id, { relations });
     },
-    events: (_, { interestIds }) => {
+    events: async (_, { interestIds }, { user }) => {
       // this could be optimized
       let builder = getRepository(Event)
         .createQueryBuilder('event')
@@ -28,7 +28,15 @@ export const resolvers: IResolvers = {
       if (interestIds.length !== 0) {
         builder = builder.where({ interest: In(interestIds) });
       }
-      return builder.getMany();
+      const events = await builder.getMany();
+      if (user) {
+        for (let i = 0; i < events.length; i++) {
+          events[i].voted = events[i].votes.some(
+            (el) => el.user !== null && el.user.id === user.id
+          );
+        }
+      }
+      return events;
     },
   },
   Mutation: {

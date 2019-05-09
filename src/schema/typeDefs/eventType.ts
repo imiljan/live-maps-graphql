@@ -18,6 +18,7 @@ export const typeDefs = gql`
     interest: Interest
     votes: [Vote]!
     userCheckins: [UserCheckin]!
+    voted: Boolean
   }
 
   extend type Query {
